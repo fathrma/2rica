@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Upscale Gambar dengan OpenCV.js</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Upscale Gambar (OpenCV.js)</h2>
+    <input type="file" id="upload" accept="image/*"><br><br>
+
+    <label>Skala:
+      <input type="number" id="scale" value="2" min="1" step="0.1">
+    </label><br><br>
+
+    <label>Metode:
+      <select id="method">
+        <option value="0">Nearest Neighbor</option>
+        <option value="1">Bilinear</option>
+        <option value="2" selected>Bicubic</option>
+        <option value="4">Lanczos</option>
+      </select>
+    </label><br><br>
+
+    <div id="actionArea">
+      <button id="process" class="fade">Upscale</button>
+      <div id="loader" class="loader hidden"></div>
+      <a id="download" href="#" download="upscaled.png" class="fade hidden">Download Hasil</a>
+    </div>
+  </div>
+
+  <!-- OpenCV.js CDN -->
+  <script async src="https://docs.opencv.org/4.x/opencv.js" onload="onOpenCvReady();"></script>
+  <script src="script.js"></script>
+</body>
+</html>
