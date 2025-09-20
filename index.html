@@ -2,34 +2,88 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Upscale Gambar dengan OpenCV.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2rica : Upscaling your images!</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="/assets/2ricabrand_white.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h2>Upscale Gambar (OpenCV.js)</h2>
-    <input type="file" id="upload" accept="image/*"><br><br>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">About Us</a>
+  </div>
 
-    <label>Skala:
-      <input type="number" id="scale" value="2" min="1" step="0.1">
-    </label><br><br>
+  <img style="
+  width: 30%;
+  float: right;
+  bottom: -5%;
+  position: fixed;
+  right: -1%;
+  opacity: 5%;
+  " src="/assets/2ricabrand.png">
 
-    <label>Metode:
+ 
+
+  <div style=" position: fixed;
+  left: 50%;
+  top: 50%; 
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  "
+  class="container">
+    <img src="assets/2ricabrand.png" style="
+    width:64px;
+    text-align: center;">
+
+    <span style="
+    font-size: 28px;
+    font-family: segoe ui black;
+    text-align: center;
+    ">2rica</span><br><br>
+
+    <div style="
+    font-size: 14px;
+    font-family: segoe ui;
+    text-align: center;
+    line-height: 0.5;
+    padding: 0 0 30px 0;
+    ">Upscaling your images !</div>
+
+    <div class="card">
+      <!-- Upload -->
+      <label for="upload" class="upload-box">
+        <span class="plus">+</span>
+        <div style=" font-size: 13px;">Upload Here</div>
+      </label>
+      <input type="file" id="upload" accept="image/*" hidden>
+
+   
+
+    <label>Scale :
+      <input type="number" id="scale" value="2" min="1" max="10" step="0.5">
+    </label>
+
+    <label>Method :
       <select id="method">
-        <option value="0">Nearest Neighbor</option>
+        <option value="0">Nearest</option>
         <option value="1">Bilinear</option>
         <option value="2" selected>Bicubic</option>
         <option value="4">Lanczos</option>
       </select>
-    </label><br><br>
+    </label>
 
-    <div id="actionArea">
-      <button id="process" class="fade">Upscale</button>
-      <div id="loader" class="loader hidden"></div>
-      <a id="download" href="#" download="upscaled.png" class="fade hidden">Download Hasil</a>
-    </div>
+ 
+  
   </div>
-
+  <br><br>
+  <div id="actionArea">
+    <button id="process" class="fade">Upscale</button>
+    <div id="loader" class="loader hidden"></div>
+    <a id="download" href="#" download="upscaled.png" class="fade hidden">Download Hasil</a>
+  </div>
   <!-- OpenCV.js CDN -->
   <script async src="https://docs.opencv.org/4.x/opencv.js" onload="onOpenCvReady();"></script>
   <script src="script.js"></script>
