@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2rica : Upscaling your images!</title>
+  <title>besarkanfoto</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="/assets/2ricabrand_white.png">
+  <link rel="icon" type="image/x-icon" href="assets/besarkanfoto.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">About Us</a>
+
+  <div class="splash">
+    <!-- Ganti dengan logo Anda -->
+    <img src="assets/besarkanfoto.png" alt="Logo" class="logo">
   </div>
 
+  <main>
+    
+
+  
   <img style="
   width: 30%;
   float: right;
-  bottom: -5%;
+  bottom: 0%;
   position: fixed;
-  right: -1%;
-  opacity: 5%;
-  " src="/assets/2ricabrand.png">
-
+  right: 3%;
+  opacity: 10%;
+  " src="assets/besarkanfoto.png">
  
 
   <div style=" position: fixed;
@@ -34,15 +38,16 @@
   transform: translate(-50%, -50%);
   "
   class="container">
-    <img src="assets/2ricabrand.png" style="
+    <img src="assets/besarkanfoto.png" style="
     width:64px;
     text-align: center;">
 
     <span style="
+    margin-left: 5px;
     font-size: 28px;
     font-family: segoe ui black;
     text-align: center;
-    ">2rica</span><br><br>
+    ">besarkanfoto</span><br><br>
 
     <div style="
     font-size: 14px;
@@ -50,17 +55,18 @@
     text-align: center;
     line-height: 0.5;
     padding: 0 0 30px 0;
-    ">Upscaling your images !</div>
+    ">Kami perbesar fotomu! :)</div>
 
     <div class="card">
       <!-- Upload -->
+      <div>
       <label for="upload" class="upload-box">
         <span class="plus">+</span>
-        <div style=" font-size: 13px;">Upload Here</div>
+        <div style=" font-size: 13px;">Upload Disini</div>
       </label>
       <input type="file" id="upload" accept="image/*" hidden>
-
-   
+      <p id="fileName">Belum dipilih</p>
+    </div>
 
     <label>Scale :
       <input type="number" id="scale" value="2" min="1" max="10" step="0.5">
@@ -79,11 +85,11 @@
   
   </div>
   <br><br>
-  <div id="actionArea">
-    <button id="process" class="fade">Upscale</button>
-    <div id="loader" class="loader hidden"></div>
-    <a id="download" href="#" download="upscaled.png" class="fade hidden">Download Hasil</a>
-  </div>
+
+<button id="actionBtn">Upload</button>
+<canvas id="hiddenCanvas" style="display:none;"></canvas>
+</main>
+
   <!-- OpenCV.js CDN -->
   <script async src="https://docs.opencv.org/4.x/opencv.js" onload="onOpenCvReady();"></script>
   <script src="script.js"></script>

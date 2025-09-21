@@ -1,9 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
+  height: 100%;
+  margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #7c90eb; /* For browsers that do not support gradients */
+    background-image: linear-gradient(180deg, #7c90eb, #354db8);
+}
 
-  background: #e6d32af3;
-  
+.grad1 {
+  height: 100%;
+  margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  background-color: #7c90eb; /* For browsers that do not support gradients */
+  background-image: linear-gradient(180deg, #7c90eb, #354db8);
 }
 
 .cherry-bomb-one-regular {
@@ -12,66 +34,76 @@ body {
   font-style: normal;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #998c1cf3;
+/* Splash screen */
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  z-index: 9999;
+  animation: fadeOut 1s ease 2s forwards;
 }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
+.logo {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  animation: fadeInOut 3.5s ease;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-.topnav a.active {
-  background-color: #2c2c2cf3;
-  color: white;
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
+
+main {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .container {
   background: white;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 8px #00000060;
   display: inline-block;
+
   
 }
-
-button, a#download {
-  display: inline-block;
+/**/
+#actionBtn {
   padding: 10px 20px;
-  background: #f0da14f3;
-  color: black;
-  text-decoration: none;
-  border-radius: 8px;
   font-size: 16px;
+  background: #22aee0;
+  color: white;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: opacity 0.5s ease;
-  border: 1px solid #202020f3;
+  transition: background 0.3s, opacity 0.3s;
 }
 
-button, a#download:focus {
-
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: opacity 0.5s ease;
-  background: #f0da14f3;
-  border: 1px solid #f0da14f3;
+#actionBtn.loading {
+  background: #ccc;
+  cursor: wait;
 }
 
-button:disabled {
-  background: #aaa;
-  cursor: not-allowed;
+#actionBtn.download {
+  background: #28a745; /* hijau untuk download */
 }
+
 
 /* Loader (spinner) */
 .loader {
@@ -106,6 +138,7 @@ button:disabled {
 
 .card {
   background: #fff;
+  
   padding: 20px 30px;
   border-radius: 12px;
 
@@ -118,9 +151,9 @@ button:disabled {
 .upload-box {
   width: 90px;
   height: 90px;
-  border: 2px dashed #1d1d1d;
+  border: 2px dashed #000442;
   border-radius: 8px;
-  color: rgb(20, 20, 20);
+  color: #141414;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -130,15 +163,28 @@ button:disabled {
 }
 
 /* Upload box */
+.upload-box.dragover {
+  background: #22aee0;
+  border: 2px dashed  #22aee0;
+  color: white;
+}
 .upload-box:hover {
-  background: #f0da14f3;
-  border: 2px dashed  #f0da14f3;
+  background: #22aee0;
+  border: 2px dashed  #22aee0;
+  color: white;
 }
 
 .plus {
   font-size: 40px;
   line-height: 1.1;
   font-family: "Cherry Bomb One", system-ui;
+}
+
+#fileName {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
 }
 
 /*scale*/
@@ -155,8 +201,9 @@ button:disabled {
 }
 
 #scale:hover {
-  background: #f0da14f3;
-  border: 1px solid #f0da14f3;
+  background: #22aee0;
+  border: 1px solid  #22aee0;
+  color: white;
 }
 
 #method {
@@ -170,6 +217,12 @@ button:disabled {
 }
 
 #method:hover {
-  background: #f0da14f3;
-  border: 1px solid #f0da14f3;
+  background: #22aee0;
+  border: 1px solid  #22aee0;
+  color: white;
+}
+
+#method option {
+  background: white !important;
+  color: #1d1d1d !important;
 }
