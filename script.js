@@ -4,6 +4,7 @@ const methodSelect = document.getElementById("method");
 const actionBtn = document.getElementById("actionBtn");
 const fileName = document.getElementById("fileName");
 
+
 let currentImage = null;
 let upscaledBlob = null;
 
@@ -21,14 +22,13 @@ window.addEventListener('load', () => {
 });
 
 
-
-// Reset tombol saat upload gambar baru
+ //Reset tombol saat upload gambar baru
 uploadInput.addEventListener("change", () => {
-  if (uploadInput.files.length > 0) {
-    currentImage = uploadInput.files[0];
-    actionBtn.textContent = "Upload";
+ if (uploadInput.files.length > 0) {
+   currentImage = uploadInput.files[0];
+ actionBtn.textContent = "Upload";
     actionBtn.className = "";
-    upscaledBlob = null;
+  upscaledBlob = null;
   }
 });
 
@@ -46,38 +46,7 @@ actionBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Jika sudah ada hasil, maka tombol jadi Download
-  if (upscaledBlob) {
-    const url = URL.createObjectURL(upscaledBlob);
-    const a = document.createElement("a");
   
-    let originalName = currentImage.name;
-    let dotIndex = originalName.lastIndexOf(".");
-    let baseName = originalName.substring(0, dotIndex);
-    let extension = originalName.substring(dotIndex);
-  
-    // ambil waktu sekarang
-    let now = new Date();
-    let year = now.getFullYear();
-    let month = String(now.getMonth() + 1).padStart(2, "0");
-    let day = String(now.getDate()).padStart(2, "0");
-    let hour = String(now.getHours()).padStart(2, "0");
-    let minute = String(now.getMinutes()).padStart(2, "0");
-    let second = String(now.getSeconds()).padStart(2, "0");
-  
-    let timestamp = `${year}${month}${day}_${hour}${minute}${second}`;
-  
-    // nama file hasil
-    a.download = `${baseName}-besarkanfoto-${timestamp}${extension}`;
-  
-    a.href = url;
-    a.click();
-    URL.revokeObjectURL(url);
-    return;
-  }
-  
-  
-
   // Mulai proses upscale
   actionBtn.textContent = "Loading...";
   actionBtn.className = "loading";
@@ -117,4 +86,39 @@ actionBtn.addEventListener("click", async () => {
     dst.delete();
   };
   img.src = URL.createObjectURL(currentImage);
+
+
+
+ // Jika sudah ada hasil, maka tombol jadi Download
+ if (upscaledBlob) {
+  const url = URL.createObjectURL(upscaledBlob);
+  const a = document.createElement("a");
+  
+    let originalName = currentImage.name;
+    let dotIndex = originalName.lastIndexOf(".");
+    let baseName = originalName.substring(0, dotIndex);
+  let extension = originalName.substring(dotIndex);
+  
+    // ambil waktu sekarang
+   let now = new Date();
+   let year = now.getFullYear();
+    let month = String(now.getMonth() + 1).padStart(2, "0");
+    let day = String(now.getDate()).padStart(2, "0");
+   let hour = String(now.getHours()).padStart(2, "0");
+    let minute = String(now.getMinutes()).padStart(2, "0");
+ let second = String(now.getSeconds()).padStart(2, "0");
+  
+   let timestamp = `${year}${month}${day}_${hour}${minute}${second}`;
+  
+    // nama file hasil
+   a.download = `${baseName}-besarkanfoto-${timestamp}${extension}`;
+  
+    a.href = url;
+    a.click();
+    URL.revokeObjectURL(url);
+   return;
+  } 
+  
+  
+
 });
